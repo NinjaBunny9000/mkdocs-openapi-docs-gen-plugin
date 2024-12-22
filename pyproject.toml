@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "openapi-docs-gen"
+version = "0.1.0"
+description = "A modern OpenAPI Docs Generator for MKDocs"
+authors = ["Krissy Heishman aka bun9000 <krissy@heishman.dev>"]
+license = "None"
+readme = "README.md"
+
+packages = [
+    { include = "openapi_docs_gen", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+mkdocs = "^1.6.1"
+rich = "^13.9.4"
+openapi3 = "^1.8.2"
+prance = "^23.6.21.0"
+pydantic = "^2.10.4"
+
+[tool.poetry.group.dev.dependencies]
+black = { version = "^24.0.0" }
+
+
+[tool.poetry.plugins."mkdocs.plugins"]
+openapi-docs-gen = "openapi_docs_gen.plugin:OpenApiDocsGenPlugin"
+
+
+[tool.black]
+line-length = 120
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+    | stubs
+  )/
+)
+'''
+
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

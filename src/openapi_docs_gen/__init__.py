@@ -1,0 +1,1 @@
+from openapi_docs_gen.plugin import OpenApiDocsGenPlugin
